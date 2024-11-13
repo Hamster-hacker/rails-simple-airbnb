@@ -1,0 +1,47 @@
+<<div class="container mt-5">
+  <div class="row">
+    <!-- Left Column: Name, Address, Description -->
+    <div class="col-md-8">
+      <div class="card shadow-sm mb-3">
+        <div class="card-body">
+          <!-- Flat Name -->
+          <h1 class="card-title"><%= @flat.name %></h1>
+          <!-- Flat Address -->
+          <h5 class="card-subtitle mb-3 text-muted"><i class="bi bi-geo-alt-fill"></i> <%= @flat.address %></h5>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="card card-body">
+        <h3>A bit more about this flat...</h3>
+        <p class="card-text"><%= @flat.description %></p>
+      </div>
+    </div>
+
+    <!-- Right Column: Price & Guests -->
+    <div class="col-md-4">
+
+      <div class="card card-body mb-3">
+        <h4>Book this place!</h4>
+
+        <button class="btn btn-success">Book</button>
+      </div>
+
+      <!-- Price & Guests -->
+      <div class="card card-body">
+        <h4>Details:</h4>
+        <p><strong>Price per Night:</strong> <%= number_to_currency(@flat.price_per_night, unit: "€") %></p>
+        <p><strong>Max Guests:</strong> <%= @flat.number_of_guests %> </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex gap-3 mt-3">
+        <%= link_to "Back to Flats", flats_path, class: "btn btn-secondary" %>
+        <%= link_to "Edit", edit_flat_path(@flat), class: "btn btn-warning" %>
+        <%= link_to "Delete", flat_path(@flat), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# d-flex justify-content-between align-items-center mb-4 %>
